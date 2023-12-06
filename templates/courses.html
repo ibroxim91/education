@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>All Courses </h1>
+    {% for c in kurslar %}
+            <h2> {{ c }} </h2>
+    {% endfor %}
+
+    <a href="/course/add">Yangi qo'shish</a>
+    
+</body>
+</html>
