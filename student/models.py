@@ -41,10 +41,3 @@ class Student(models.Model):
 
 
 
-
-            Cart_products
-    id   cart_id     product_id 
-    1     2            8
-    2     2            9
-    3     2            19
-    4     3            8

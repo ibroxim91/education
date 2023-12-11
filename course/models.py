@@ -18,8 +18,14 @@ class Course(models.Model):
     author = models.ForeignKey("auth.User" , on_delete=models.CASCADE)
     price = models.PositiveIntegerField("Price") # Quantity
 
+    def __str__(self):
+        return self.title
+
 class CourseVideos(models.Model):
     course = models.ForeignKey(Course , on_delete=models.CASCADE)  
     name = models.CharField(max_length=20)
     video_file = models.FileField(upload_to="videos")
+    
+    def __str__(self):
+        return f"{self.name} -> {self.course.title}"
 

@@ -1,7 +1,11 @@
 from django.contrib import admin
-from .models import Course, Category
+from .models import Course, Category, CourseVideos
 
 # Register your models here.
+
+
+class CourseVideosAdmin(admin.TabularInline):
+    model = CourseVideos
 
 
 @admin.register(Category)
@@ -15,6 +19,7 @@ class CourseAdmin(admin.ModelAdmin):
     list_display_links = ("title",)
     search_fields = ("title","price")
     list_filter = ("category","price")
+    inlines = [CourseVideosAdmin]
 
 
 admin.site.site_header = "Kurslar"
