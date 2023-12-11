@@ -29,3 +29,11 @@ class CourseVideos(models.Model):
     def __str__(self):
         return f"{self.name} -> {self.course.title}"
 
+
+
+class Gallery(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    title = models.CharField(max_length=20)
+    image = models.ImageField(upload_to="images")
+
+    

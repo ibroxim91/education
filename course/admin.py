@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import Course, Category, CourseVideos
+from .models import Course, Category, CourseVideos,Gallery
 
 # Register your models here.
-
+admin.site.register(Gallery)
 
 class CourseVideosAdmin(admin.TabularInline):
     model = CourseVideos

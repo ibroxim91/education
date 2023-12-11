@@ -56,7 +56,7 @@ ROOT_URLCONF = 'education.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ["templates"],
+        'DIRS': ["templates","shablon"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

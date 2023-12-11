@@ -2,6 +2,9 @@
 	{% extends 'wrapper.html' %}
 	
 {% block content %}
+
+{% include 'mycard.html' %}
+
 	<!--================ Travel Category Area =================-->
 	<section class="travel_category">
 		<div class="container">
@@ -18,7 +21,7 @@
 				
         
         {% for c in courses %}
-        <div class="single_travel wow fadeIn" data-wow-duration="1s">
+        		<div class="single_travel wow fadeIn" data-wow-duration="1s">
 					<figure>
 						<img class="img-fluid" src="{{ c.image.url }}" height="300px" alt="">
 					</figure>
@@ -40,6 +43,9 @@
 						</div>
 					</div>
 				</div>
+
+
+				
 
         {% endfor %}
 
