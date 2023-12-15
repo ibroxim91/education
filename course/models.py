@@ -8,10 +8,8 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-
-
 class Course(models.Model):
-    category = models.ForeignKey(Category , on_delete=models.CASCADE)  
+    category = models.ForeignKey(Category , on_delete=models.CASCADE , related_name="courses")  
     title = models.CharField("Title", max_length=55) # Descriptor ORM
     image = models.ImageField(upload_to="Courses")
     duration = models.IntegerField("Months")

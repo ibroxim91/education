@@ -1,14 +1,14 @@
 from django.shortcuts import render,get_object_or_404
 from django.http import JsonResponse
-from course.models import Course , Category
+from course.models import Course , Category , Gallery
 
 # Create your views here.
 
 def home(request):
     course_all = Course.objects.all()
     category_all = Category.objects.all()
-    
-    context = {"courses": course_all , "category_all":category_all}
+    photos = Gallery.objects.all() 
+    context = {"courses": course_all , "category_all":category_all ,"photos_all":photos}
     return render(request, "index.html", context)
 
 
