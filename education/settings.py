@@ -64,6 +64,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'student.my_context.mycontext',
             ],
         },
     },
@@ -133,6 +134,13 @@ LOGIN_URL = "/login"
 LOGIN_REDIRECT_URL = "/"
 
 
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'navbaxor2016@mail.ru'
+EMAIL_HOST_PASSWORD = 'YOUR PASSWORD'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
