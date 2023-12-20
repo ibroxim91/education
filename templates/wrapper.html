@@ -68,20 +68,28 @@
 								<ul class="dropdown-menu">
 
 
-									{% for c in category_all %}
-										<li class="nav-item  {% if forloop.counter == 0 %} bg-success {%endif %}" >
-											<a class="nav-link" href="/category/{{ c.id }}"> {{ c.name }} </a>
-										</li>
-									{% endfor %}
+		{% for c in category_all %}
+			<li class="nav-item  {% if forloop.counter == 0 %} bg-success {%endif %}" >
+				<a class="nav-link" href="{{ c.get_absolute_url }}"> {{ c.name }}  
+					( {{ c.course_count }} ) </a>
+			</li>
+		{% endfor %}
 
 
 
 
 								</ul>
 							</li>
+
+
 							<li class="nav-item">
 								<a class="nav-link" href="contact.html">Contact</a>
 							</li>
+							
+							<li class="nav-item">
+								<a class="nav-link" href="{% url 'student:login' %}"  >Login</a>
+							</li>
+
 						</ul>
 						<ul class="nav navbar-nav ml-auto search">
 								<li class="nav-item d-flex align-items-center mr-10">

@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 
@@ -7,6 +8,16 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        return reverse("student:category_detail" , args=(self.pk,) )
+    
+    def course_count(self):
+        courses = Course.objects.filter(category=self).count()
+        return courses
+    
+
+
 
 class Course(models.Model):
     category = models.ForeignKey(Category , on_delete=models.CASCADE , related_name="courses")  
