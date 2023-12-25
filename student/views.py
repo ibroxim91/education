@@ -1,17 +1,48 @@
+from typing import Any
+from django.db.models.query import QuerySet
 from django.shortcuts import render,get_object_or_404, redirect
-
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from  .sendMail import send_user_mail
-
 from course.models import Course , Category , Gallery
-
 from django.contrib.auth.views import LoginView
 
 from django.contrib.auth.models import User
 from django.contrib import messages
+from threading import Thread
+from django.views.generic import TemplateView, ListView ,CreateView,UpdateView,DeleteView
+from django.views.generic.detail import DetailView
+from django.views import View
+
 
 # Create your views here.
+
+class  TestView(DeleteView):
+    template_name = 'test.html'
+    model = Course
+    context_object_name = ''
+    fields = "__all__"
+
+
+
+    # # queryset = Course.objects.all()[:1]
+    # context_object_name = "courses"  
+
+    # def get_queryset(self) -> QuerySet[Any]:
+    #     user = self.request.user
+    #     queryset = Course.objects.filter(author=user)
+
+    #     return  queryset
+
+    # def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+    #     context = super().get_context_data(**kwargs)
+    #     context["categories"] = Category.objects.all()
+    #     return context
+
+
+
+
+
 
 def home(request):
     print()
@@ -69,8 +100,8 @@ def register_view(request):
             return redirect("student:register")
         user = User.objects.create_user(username=username, email=email, password=psw)
         messages.add_message(request, messages.SUCCESS , "Ro'yxatdan o'tdingiz")
-        send_user_mail(email)
+        Thread(target=send_user_mail , args=(email,) ).start()
+        # send_user_mail(email)
         return redirect("student:login")
-
 
     return render(request, "registration/register.html")

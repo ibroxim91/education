@@ -140,7 +140,7 @@ EMAIL_HOST = 'smtp.mail.ru'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'navbaxor2016@mail.ru'
-EMAIL_HOST_PASSWORD = 'YOUR PASSWORD'
+EMAIL_HOST_PASSWORD = 'eit51JMTn7WeDygnbFdk'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
