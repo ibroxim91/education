@@ -17,13 +17,29 @@ from django.views import View
 
 # Create your views here.
 
-class  TestView(DeleteView):
+class  TestView(View):
     template_name = 'test.html'
-    model = Course
-    context_object_name = ''
-    fields = "__all__"
 
+    def get(self, request):
+        context = {}
+        context["categories"] = Category.objects.all()
+        return render(request, self.template_name, context)
 
+    def post(self, request):
+        print()
+        print(request.POST)
+        print(request.user)
+        print()
+        title = request.POST.get('title')
+        duration = request.POST.get('duration')
+        price = request.POST.get('price')
+        category_id = request.POST.get('category_id')
+        category = Category.objects.get(id= int(category_id)  )
+        author = User.objects.get(id=1)
+        course = Course.objects.create(category=category, title=title, duration=duration,
+                                       price=price, author=author)
+        messages.add_message(request, messages.SUCCESS ,"Kurs qo'shilidi ")
+        return redirect('/test')
 
     # # queryset = Course.objects.all()[:1]
     # context_object_name = "courses"  
@@ -33,11 +49,6 @@ class  TestView(DeleteView):
     #     queryset = Course.objects.filter(author=user)
 
     #     return  queryset
-
-    # def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
-    #     context = super().get_context_data(**kwargs)
-    #     context["categories"] = Category.objects.all()
-    #     return context
 
 
 

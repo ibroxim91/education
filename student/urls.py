@@ -11,5 +11,5 @@ urlpatterns = [
     path('category/<int:id>', category_courses ,name="category_detail" ),
     path('kirish', MyLoginView.as_view()  , name="login" ),
     path('register', register_view  , name="register" ),
-    path('test/<int:pk>',  TestView.as_view() , name="test" ),
+    path('test',  TestView.as_view() , name="test" ),
 ]
